@@ -79,12 +79,12 @@ jobs:
                         # 根据group-title分类
                         if group_title == "央视":
                             # 在央视分组中，根据频道名称进一步分类
-                            if "CCTV" in channel_info and "CCTV-MCP" not in channel_info:
+                            if "CCTV" in channel_info and "MCP" not in channel_info:
                                 # IPTV1 - 咪咕央视
                                 new_info = re.sub(r'group-title="[^"]*"', 'group-title="咪咕央视"', channel_info)
                                 iptv_lists["IPTV1"].append(new_info)
                                 iptv_lists["IPTV1"].append(channel_url)
-                            elif "CCTV-MCP" in channel_info:
+                            elif "MCP" in channel_info:
                                 # IPTV2 - 央视频道
                                 new_info = re.sub(r'group-title="[^"]*"', 'group-title="央视频道"', channel_info)
                                 iptv_lists["IPTV2"].append(new_info)
