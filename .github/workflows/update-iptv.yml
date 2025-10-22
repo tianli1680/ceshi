@@ -9,11 +9,15 @@ on:
 jobs:
   update-iptv:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 添加写入仓库的权限
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}  # 使用GITHUB_TOKEN进行认证
+        
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -31,7 +35,7 @@ jobs:
         import re
         
         def process_playlist():
-            # 播放链接
+            # 播放链接 - 请替换为实际链接
             url = "https://iptv.livephp.fun/https://raw.githubusercontent.com/tianli1680/iptv/refs/heads/main/IPTV.m3u"
             
             try:
@@ -113,5 +117,10 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add IPTV*.m3u
-        git diff --staged --quiet || git commit -m "Auto-update IPTV playlists - $(date)"
-        git push
+        # 检查是否有更改，有更改才提交
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m "Auto-update IPTV playlists - $(date +'%Y-%m-%d %H:%M:%S')"
+          git push
+        fi
