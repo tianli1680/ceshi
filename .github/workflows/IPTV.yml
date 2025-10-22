@@ -15,7 +15,7 @@ jobs:
       
     - name: 设置环境
       run: |
-        echo "SOURCE_URL=https://raw.githubusercontent.com/tianli1680/iptv/refs/heads/main/IPTV.m3u" >> $GITHUB_ENV
+        echo "SOURCE_URL=https://iptv.livephp.fun/https://raw.githubusercontent.com/tianli1680/iptv/refs/heads/main/IPTV.m3u" >> $GITHUB_ENV
         echo "UPDATE_TIME=$(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_ENV
         
     - name: 下载并处理IPTV数据
