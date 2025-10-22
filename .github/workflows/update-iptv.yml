@@ -52,36 +52,36 @@ jobs:
                 
                 lines = content.split('\n')
                 i = 0
-                current_group = ""
                 
                 while i < len(lines):
                     line = lines[i].strip()
                     
-                    # 检测分组信息
-                    if line.startswith('#EXTGRP:'):
-                        group_name = line.replace('#EXTGRP:', '').strip()
-                        current_group = group_name
-                    
                     # 检测频道信息行
-                    elif line.startswith('#EXTINF:'):
+                    if line.startswith('#EXTINF:'):
                         # 获取频道信息
                         channel_info = line
                         channel_url = lines[i+1].strip() if i+1 < len(lines) else ""
                         
-                        # 根据分组和频道名称分类
-                        if current_group == "央视":
-                            if "CCTV" in channel_info and "CCTV-MCP" not in channel_info:
-                                iptv1_lines.append(channel_info)
-                                iptv1_lines.append(channel_url)
-                            elif "CCTV-MCP" in channel_info:
-                                iptv2_lines.append(channel_info)
-                                iptv2_lines.append(channel_url)
-                        elif current_group == "卫视":
-                            iptv3_lines.append(channel_info)
-                            iptv3_lines.append(channel_url)
-                        elif current_group == "体育":
-                            iptv4_lines.append(channel_info)
-                            iptv4_lines.append(channel_url)
+                        # 提取group-title属性
+                        group_match = re.search(r'group-title="([^"]*)"', channel_info)
+                        if group_match:
+                            group_title = group_match.group(1)
+                            
+                            # 根据group-title分类
+                            if group_title == "央视":
+                                # 在央视分组中，根据频道名称进一步分类
+                                if "CCTV" in channel_info and "CCTV-MCP" not in channel_info:
+                                    iptv1_lines.append(channel_info)
+                                    iptv1_lines.append(channel_url)
+                                elif "CCTV-MCP" in channel_info:
+                                    iptv2_lines.append(channel_info)
+                                    iptv2_lines.append(channel_url)
+                            elif group_title == "卫视":
+                                iptv3_lines.append(channel_info)
+                                iptv3_lines.append(channel_url)
+                            elif group_title == "体育":
+                                iptv4_lines.append(channel_info)
+                                iptv4_lines.append(channel_url)
                         
                         i += 1  # 跳过URL行
                     
@@ -101,6 +101,10 @@ jobs:
                     f.write('\n'.join(iptv4_lines))
                     
                 print("Playlists processed successfully!")
+                print(f"IPTV1 (CCTV): {len(iptv1_lines)//2} channels")
+                print(f"IPTV2 (CCTV-MCP): {len(iptv2_lines)//2} channels")
+                print(f"IPTV3 (卫视): {len(iptv3_lines)//2} channels")
+                print(f"IPTV4 (体育): {len(iptv4_lines)//2} channels")
                 
             except Exception as e:
                 print(f"Error processing playlist: {e}")
