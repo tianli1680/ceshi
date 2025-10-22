@@ -2,8 +2,8 @@ name: Update IPTV Playlists
 
 on:
   schedule:
-    # 每4小时运行一次
-    - cron: '0 */4 * * *'
+    # 每2小时运行一次
+    - cron: '0 */2 * * *'
   workflow_dispatch:  # 允许手动触发
 
 jobs:
@@ -117,8 +117,8 @@ jobs:
                             iptv_lists["IPTV7"].append(new_info)
                             iptv_lists["IPTV7"].append(channel_url)
                         elif group_title == "一起看":
-                            # IPTV8 - 抖音轮播频道
-                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="抖音轮播频道"', channel_info)
+                            # IPTV8 - 抖鱼轮播频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="抖鱼轮播频道"', channel_info)
                             iptv_lists["IPTV8"].append(new_info)
                             iptv_lists["IPTV8"].append(channel_url)
                         elif group_title == "原创IP":
@@ -161,10 +161,10 @@ jobs:
                     "IPTV7",  # 影视频道
                     "IPTV6",  # 地方频道
                     "IPTV12", # 其他频道
-                    "IPTV8",  # YY轮播频道
-                    "IPTV9",  # 虎牙轮播频道
-                    "IPTV10", # 斗鱼轮播频道
-                    "IPTV11"  # 抖音轮播频道
+                    "IPTV8",  # 斗鱼轮播频道
+                    "IPTV9",  # 抖音轮播频道
+                    "IPTV10", # 虎牙轮播频道
+                    "IPTV11"  # YY轮播频道
                 ]
                 
                 merged_lines = ["#EXTM3U"]
