@@ -134,29 +134,29 @@ jobs:
                             all_channels.append(new_info)
                             all_channels.append(channel_url)
                         elif group_title == "一起看":
-                            # IPTV8 - YY轮播频道
-                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="YY轮播频道"', channel_info)
+                            # IPTV8 - 斗鱼轮播频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="斗鱼轮播频道"', channel_info)
                             iptv_lists["IPTV8"].append(new_info)
                             iptv_lists["IPTV8"].append(channel_url)
                             all_channels.append(new_info)
                             all_channels.append(channel_url)
                         elif group_title == "原创IP":
-                            # IPTV9 - 虎牙轮播频道
-                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="虎牙轮播频道"', channel_info)
+                            # IPTV9 - 抖音轮播频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="抖音轮播频道"', channel_info)
                             iptv_lists["IPTV9"].append(new_info)
                             iptv_lists["IPTV9"].append(channel_url)
                             all_channels.append(new_info)
                             all_channels.append(channel_url)
                         elif group_title == "原创":
-                            # IPTV10 - 斗鱼轮播频道
-                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="斗鱼轮播频道"', channel_info)
+                            # IPTV10 - 虎牙轮播频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="虎牙轮播频道"', channel_info)
                             iptv_lists["IPTV10"].append(new_info)
                             iptv_lists["IPTV10"].append(channel_url)
                             all_channels.append(new_info)
                             all_channels.append(channel_url)
                         elif group_title == "zonghe":
-                            # IPTV11 - 抖音轮播频道
-                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="抖音轮播频道"', channel_info)
+                            # IPTV11 - YY轮播频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="YY轮播频道"', channel_info)
                             iptv_lists["IPTV11"].append(new_info)
                             iptv_lists["IPTV11"].append(channel_url)
                             all_channels.append(new_info)
