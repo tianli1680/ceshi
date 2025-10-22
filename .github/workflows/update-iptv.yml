@@ -2,8 +2,8 @@ name: Update IPTV Playlists
 
 on:
   schedule:
-    # 每2小时运行一次
-    - cron: '0 */2 * * *'
+    # 每4小时运行一次
+    - cron: '0 */4 * * *'
   workflow_dispatch:  # 允许手动触发
 
 jobs:
