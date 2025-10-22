@@ -1,0 +1,9 @@
+#EXTM3U
+#EXTINF:-1 tvg-name="重温经典" tvg-logo="https://11.112114.xyz/logo/重温经典.png" group-title="其他频道",重温经典
+https://other.ottiptv.cc/cwjd.m3u8
+#EXTINF:-1 tvg-name="五星体育" tvg-logo="https://11.112114.xyz/logo/五星体育.png" group-title="其他频道",五星体育
+https://other.ottiptv.cc/wxty.m3u8
+#EXTINF:-1 tvg-name="中国教育1台" tvg-logo="https://11.112114.xyz/logo/中国教育1台.png" group-title="其他频道",中国教育电视台-MCP
+https://live.ottiptv.cc/mcp/cetv1.m3u8?userid=8137863657&sign=937418b373125b32b6eae221d07361ca9cd2ceb851f09e54d6fc4e83342d979665a4a9f2123e8cf909f9e127ee9e4514d6a365057db20f53dcba2668e5c61b3de23b9ebbedd2f0c2982b222a23&auth_token=54741b289e946919fc1c34ca88db58a4
+#EXTINF:-1 tvg-name="五星体育" tvg-logo="https://11.112114.xyz/logo/五星体育.png" group-title="其他频道",五星体育
+https://other.ottiptv.cc/wxty.m3u8
