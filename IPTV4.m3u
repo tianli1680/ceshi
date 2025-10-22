@@ -1,1 +1,17 @@
 #EXTM3U
+#EXTINF:-1 tvg-name="五环传奇" tvg-logo="https://wapx.cmvideo.cn/publish/poms/image/5500/462/658/202506201045_1750387453057_H169_1080.jpg" group-title="体育", 五环传奇
+https://mgtv.ottiptv.cc/mg/707671890.m3u8?userid=8137863657&sign=abd3fe6c3a7a17b3be3e7688fa2b4913f7538381a4f1efb23e4bdeadb0d534c8eb4c14f1fcf19a602a07c5e77d6f1f2bbc53112f59ac196f49de3c2da4b3e967f4aee3e54fe92194732753a262092a7a57&auth_token=54741b289e946919fc1c34ca88db58a4
+#EXTINF:-1 tvg-name="赛事最经典" tvg-logo="https://wapx.cmvideo.cn/publish/poms/image/5500/592/947/202204010047_5101034296_H169_1080.jpg" group-title="体育", 赛事最经典
+https://mgtv.ottiptv.cc/mg/646596895.m3u8?userid=8137863657&sign=1c360e54c8ced0e1b051813f2f2b0ddfa20b75d35ad10d043bb9a4e55bbc600f2f89cfebcaee97d6a93750dc223d01a7a7647c5677c5dc1fc74362a31e99f20717ef124f6dc882e42095ff06642fa2288a&auth_token=54741b289e946919fc1c34ca88db58a4
+#EXTINF:-1 tvg-name="掼蛋精英赛" tvg-logo="https://wapx.cmvideo.cn/publish/poms/image/5500/341/085/202308221004_1692669748086_H169_1080.jpg" group-title="体育", 掼蛋精英赛
+https://mgtv.ottiptv.cc/mg/631354620.m3u8?userid=8137863657&sign=bde522772743d129404e5b6afadc0c18081b88992c74c00a4eede27d1a8398704261e19cb69529f66b377d5cfc54630d3be9e767ad94011e23b0439349af6709346740e0423112bda150831f4fefa46a24&auth_token=54741b289e946919fc1c34ca88db58a4
+#EXTINF:-1 tvg-name="体坛名栏汇" tvg-logo="https://wapx.cmvideo.cn/publish/poms/image/5500/315/687/202204010048_5101034219_H169_1080.jpg" group-title="体育", 体坛名栏汇
+https://mgtv.ottiptv.cc/mg/629943305.m3u8?userid=8137863657&sign=dea90266a517b7e372554c698f022a618e20924ad0077be511d7636145084d008481d9418ccfef67d1ef52f6d8d141f9c5f66a45b34c5fe9c3114b3564af57681f5539e8291621002c0a892baa9b515c3f&auth_token=54741b289e946919fc1c34ca88db58a4
+#EXTINF:-1 tvg-name="四海钓鱼" tvg-logo="https://wapx.cmvideo.cn/publish/poms/v1/image/5910/022/184/202508040856_5100132656_H169_1080.jpg" group-title="体育", 四海钓鱼
+https://mgtv.ottiptv.cc/mg/637444975.m3u8?userid=8137863657&sign=f7ef1cc07544d9e36cd55838e3ef10826cddc6baf8859a93815691589411d206a1e5169e0b22cfc6df7a9c4a6f10ca62edca44d314b26ff01996f61a5aaa69608019922c9a278adbe3df07b1d0a81d7f32&auth_token=54741b289e946919fc1c34ca88db58a4
+#EXTINF:-1 tvg-name="咪咕24小时体育台" tvg-logo="https://wapx.cmvideo.cn/publish/poms/image/5500/751/211/202106111236_5102223687_201903181136295010914_HSJ720H.jpg" group-title="体育", 咪咕24小时体育台
+https://mgtv.ottiptv.cc/mg/654102378.m3u8?userid=8137863657&sign=a1499686291ef739a3cf6a2ea85e2f965cc33a7a39ddd327c620a6857cbf73439ed2dcdab8516e599ce63205ff4509bed148c5067c335b2f4766c4b1d742d922ef890c29b43fe25a5d9835525ae61a1586&auth_token=54741b289e946919fc1c34ca88db58a4
+#EXTINF:-1 tvg-name="24小时城市联赛轮播台" tvg-logo="https://wapx.cmvideo.cn/publish/poms/image/5910/022/136/202509241340_1758692374760_H169_1080.jpg" group-title="体育", 24小时城市联赛轮播台
+https://mgtv.ottiptv.cc/mg/915512915.m3u8?userid=8137863657&sign=5373001ff45b24d4610d859c1fb592d8edba60fadca3f291866809796c5eadee7aa988835d1bd41a8c3ab3a88f3a6af8286346a5a86ba150906fa41d61b0252bc695e3a0e34de5ab981a5d5f9521003396&auth_token=54741b289e946919fc1c34ca88db58a4
+#EXTINF:-1 tvg-name="武术世界" tvg-logo="https://wapx.cmvideo.cn/publish/poms/v1/image/5910/022/201/202509251348_1758698469335_H169_1080.jpg" group-title="体育", 武术世界
+https://mgtv.ottiptv.cc/mg/958475359.m3u8?userid=8137863657&sign=7bb0db0c25059c2157e197062165920d1b5f960550b1ccfaed2f5008e13c0187c373176345609252d56bf9e7951c9cd3f64dffaafc06e3b44c3724272bc48f54b767afe8426f9c111e2df672b16ffbaefc&auth_token=54741b289e946919fc1c34ca88db58a4
