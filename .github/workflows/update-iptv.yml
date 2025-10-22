@@ -3,7 +3,7 @@ name: Update IPTV Playlists
 on:
   schedule:
     # 每2小时运行一次
-    - cron: '0 */6 * * *'
+    - cron: '0 */2 * * *'
   workflow_dispatch:  # 允许手动触发
 
 jobs:
@@ -45,10 +45,23 @@ jobs:
                 content = response.text
                 
                 # 初始化分类存储
-                iptv1_lines = ["#EXTM3U"]
-                iptv2_lines = ["#EXTM3U"] 
-                iptv3_lines = ["#EXTM3U"]
-                iptv4_lines = ["#EXTM3U"]
+                iptv_lists = {
+                    "IPTV1": ["#EXTM3U"],  # 咪咕央视
+                    "IPTV2": ["#EXTM3U"],  # 央视频道
+                    "IPTV3": ["#EXTM3U"],  # 咪咕卫视
+                    "IPTV4": ["#EXTM3U"],  # 体育频道
+                    "IPTV5": ["#EXTM3U"],  # 卫视频道
+                    "IPTV6": ["#EXTM3U"],  # 地方频道
+                    "IPTV7": ["#EXTM3U"],  # 影视频道
+                    "IPTV8": ["#EXTM3U"],  # YY轮播频道
+                    "IPTV9": ["#EXTM3U"],  # 虎牙轮播频道
+                    "IPTV10": ["#EXTM3U"], # 斗鱼轮播频道
+                    "IPTV11": ["#EXTM3U"], # 抖音轮播频道
+                    "IPTV12": ["#EXTM3U"]  # 其他频道
+                }
+                
+                # 合并列表
+                all_channels = ["#EXTM3U"]
                 
                 lines = content.split('\n')
                 i = 0
@@ -64,47 +77,115 @@ jobs:
                         
                         # 提取group-title属性
                         group_match = re.search(r'group-title="([^"]*)"', channel_info)
-                        if group_match:
-                            group_title = group_match.group(1)
-                            
-                            # 根据group-title分类
-                            if group_title == "央视":
-                                # 在央视分组中，根据频道名称进一步分类
-                                if "CCTV" in channel_info and "MCP" not in channel_info:
-                                    iptv1_lines.append(channel_info)
-                                    iptv1_lines.append(channel_url)
-                                elif "MCP" in channel_info:
-                                    iptv2_lines.append(channel_info)
-                                    iptv2_lines.append(channel_url)
-                            elif group_title == "卫视":
-                                iptv3_lines.append(channel_info)
-                                iptv3_lines.append(channel_url)
-                            elif group_title == "体育":
-                                iptv4_lines.append(channel_info)
-                                iptv4_lines.append(channel_url)
+                        group_title = group_match.group(1) if group_match else ""
+                        
+                        # 根据group-title分类
+                        if group_title == "央视":
+                            # 在央视分组中，根据频道名称进一步分类
+                            if "CCTV" in channel_info and "MCP" not in channel_info:
+                                # IPTV1 - 咪咕央视
+                                new_info = re.sub(r'group-title="[^"]*"', 'group-title="咪咕央视"', channel_info)
+                                iptv_lists["IPTV1"].append(new_info)
+                                iptv_lists["IPTV1"].append(channel_url)
+                                all_channels.append(new_info)
+                                all_channels.append(channel_url)
+                            elif "MCP" in channel_info:
+                                # IPTV2 - 央视频道
+                                new_info = re.sub(r'group-title="[^"]*"', 'group-title="央视频道"', channel_info)
+                                iptv_lists["IPTV2"].append(new_info)
+                                iptv_lists["IPTV2"].append(channel_url)
+                                all_channels.append(new_info)
+                                all_channels.append(channel_url)
+                        elif group_title == "卫视":
+                            # 在卫视频道中，根据是否包含MCP进一步分类
+                            if "MCP" in channel_info:
+                                # IPTV5 - 卫视频道
+                                new_info = re.sub(r'group-title="[^"]*"', 'group-title="卫视频道"', channel_info)
+                                iptv_lists["IPTV5"].append(new_info)
+                                iptv_lists["IPTV5"].append(channel_url)
+                                all_channels.append(new_info)
+                                all_channels.append(channel_url)
+                            else:
+                                # IPTV3 - 咪咕卫视
+                                new_info = re.sub(r'group-title="[^"]*"', 'group-title="咪咕卫视"', channel_info)
+                                iptv_lists["IPTV3"].append(new_info)
+                                iptv_lists["IPTV3"].append(channel_url)
+                                all_channels.append(new_info)
+                                all_channels.append(channel_url)
+                        elif group_title == "体育":
+                            # IPTV4 - 体育频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="体育频道"', channel_info)
+                            iptv_lists["IPTV4"].append(new_info)
+                            iptv_lists["IPTV4"].append(channel_url)
+                            all_channels.append(new_info)
+                            all_channels.append(channel_url)
+                        elif group_title == "地方":
+                            # IPTV6 - 地方频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="地方频道"', channel_info)
+                            iptv_lists["IPTV6"].append(new_info)
+                            iptv_lists["IPTV6"].append(channel_url)
+                            all_channels.append(new_info)
+                            all_channels.append(channel_url)
+                        elif group_title == "影视":
+                            # IPTV7 - 影视频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="影视频道"', channel_info)
+                            iptv_lists["IPTV7"].append(new_info)
+                            iptv_lists["IPTV7"].append(channel_url)
+                            all_channels.append(new_info)
+                            all_channels.append(channel_url)
+                        elif group_title == "一起看":
+                            # IPTV8 - YY轮播频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="YY轮播频道"', channel_info)
+                            iptv_lists["IPTV8"].append(new_info)
+                            iptv_lists["IPTV8"].append(channel_url)
+                            all_channels.append(new_info)
+                            all_channels.append(channel_url)
+                        elif group_title == "原创IP":
+                            # IPTV9 - 虎牙轮播频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="虎牙轮播频道"', channel_info)
+                            iptv_lists["IPTV9"].append(new_info)
+                            iptv_lists["IPTV9"].append(channel_url)
+                            all_channels.append(new_info)
+                            all_channels.append(channel_url)
+                        elif group_title == "原创":
+                            # IPTV10 - 斗鱼轮播频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="斗鱼轮播频道"', channel_info)
+                            iptv_lists["IPTV10"].append(new_info)
+                            iptv_lists["IPTV10"].append(channel_url)
+                            all_channels.append(new_info)
+                            all_channels.append(channel_url)
+                        elif group_title == "zonghe":
+                            # IPTV11 - 抖音轮播频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="抖音轮播频道"', channel_info)
+                            iptv_lists["IPTV11"].append(new_info)
+                            iptv_lists["IPTV11"].append(channel_url)
+                            all_channels.append(new_info)
+                            all_channels.append(channel_url)
+                        elif group_title == "其他":
+                            # IPTV12 - 其他频道
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="其他频道"', channel_info)
+                            iptv_lists["IPTV12"].append(new_info)
+                            iptv_lists["IPTV12"].append(channel_url)
+                            all_channels.append(new_info)
+                            all_channels.append(channel_url)
                         
                         i += 1  # 跳过URL行
                     
                     i += 1
                 
                 # 保存分类后的播放列表
-                with open('IPTV1.m3u', 'w', encoding='utf-8') as f:
-                    f.write('\n'.join(iptv1_lines))
+                for name, lines_list in iptv_lists.items():
+                    with open(f'{name}.m3u', 'w', encoding='utf-8') as f:
+                        f.write('\n'.join(lines_list))
                 
-                with open('IPTV2.m3u', 'w', encoding='utf-8') as f:
-                    f.write('\n'.join(iptv2_lines))
-                
-                with open('IPTV3.m3u', 'w', encoding='utf-8') as f:
-                    f.write('\n'.join(iptv3_lines))
-                
-                with open('IPTV4.m3u', 'w', encoding='utf-8') as f:
-                    f.write('\n'.join(iptv4_lines))
+                # 保存合并的播放列表
+                with open('all_channels.m3u', 'w', encoding='utf-8') as f:
+                    f.write('\n'.join(all_channels))
                     
                 print("Playlists processed successfully!")
-                print(f"IPTV1 (CCTV): {len(iptv1_lines)//2} channels")
-                print(f"IPTV2 (CCTV-MCP): {len(iptv2_lines)//2} channels")
-                print(f"IPTV3 (卫视): {len(iptv3_lines)//2} channels")
-                print(f"IPTV4 (体育): {len(iptv4_lines)//2} channels")
+                for name, lines_list in iptv_lists.items():
+                    print(f"{name}: {len(lines_list)//2} channels")
+                print(f"All channels: {len(all_channels)//2} channels")
                 
             except Exception as e:
                 print(f"Error processing playlist: {e}")
@@ -120,7 +201,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add IPTV*.m3u
+        git add IPTV*.m3u all_channels.m3u
         # 检查是否有更改，有更改才提交
         if git diff --staged --quiet; then
           echo "No changes to commit"
