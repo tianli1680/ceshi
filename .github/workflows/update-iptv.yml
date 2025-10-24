@@ -53,10 +53,10 @@ jobs:
                     "IPTV5": ["#EXTM3U"],  # 卫视频道
                     "IPTV6": ["#EXTM3U"],  # 地方频道
                     "IPTV7": ["#EXTM3U"],  # 影视频道
-                    "IPTV8": ["#EXTM3U"],  # YY轮播频道
-                    "IPTV9": ["#EXTM3U"],  # 虎牙轮播频道
-                    "IPTV10": ["#EXTM3U"], # 斗鱼轮播频道
-                    "IPTV11": ["#EXTM3U"], # 抖音轮播频道
+                    "IPTV8": ["#EXTM3U"],  # Y Y 轮播
+                    "IPTV9": ["#EXTM3U"],  # 虎牙轮播
+                    "IPTV10": ["#EXTM3U"], # 斗鱼轮播
+                    "IPTV11": ["#EXTM3U"], # 抖音轮播
                     "IPTV12": ["#EXTM3U"]  # 其他频道
                 }
                 
@@ -117,23 +117,23 @@ jobs:
                             iptv_lists["IPTV7"].append(new_info)
                             iptv_lists["IPTV7"].append(channel_url)
                         elif group_title == "一起看":
-                            # IPTV8 - 抖鱼轮播频道
-                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="抖鱼轮播频道"', channel_info)
+                            # IPTV8 - 抖鱼轮播
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="抖鱼轮播"', channel_info)
                             iptv_lists["IPTV8"].append(new_info)
                             iptv_lists["IPTV8"].append(channel_url)
                         elif group_title == "原创IP":
-                            # IPTV9 - 抖音轮播频道
-                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="抖音轮播频道"', channel_info)
+                            # IPTV9 - 抖音轮播
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="抖音轮播"', channel_info)
                             iptv_lists["IPTV9"].append(new_info)
                             iptv_lists["IPTV9"].append(channel_url)
                         elif group_title == "原创":
-                            # IPTV10 - 虎牙轮播频道
-                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="虎牙轮播频道"', channel_info)
+                            # IPTV10 - 虎牙轮播
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="虎牙轮播"', channel_info)
                             iptv_lists["IPTV10"].append(new_info)
                             iptv_lists["IPTV10"].append(channel_url)
                         elif group_title == "zonghe":
-                            # IPTV11 - YY轮播频道
-                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="YY轮播频道"', channel_info)
+                            # IPTV11 - Y Y 轮播
+                            new_info = re.sub(r'group-title="[^"]*"', 'group-title="Y Y 轮播"', channel_info)
                             iptv_lists["IPTV11"].append(new_info)
                             iptv_lists["IPTV11"].append(channel_url)
                         elif group_title == "其他":
@@ -161,10 +161,10 @@ jobs:
                     "IPTV7",  # 影视频道
                     "IPTV6",  # 地方频道
                     "IPTV12", # 其他频道
-                    "IPTV8",  # 斗鱼轮播频道
-                    "IPTV9",  # 抖音轮播频道
-                    "IPTV10", # 虎牙轮播频道
-                    "IPTV11"  # YY轮播频道
+                    "IPTV8",  # 斗鱼轮播
+                    "IPTV9",  # 抖音轮播
+                    "IPTV10", # 虎牙轮播
+                    "IPTV11"  # Y Y 轮播
                 ]
                 
                 merged_lines = ["#EXTM3U"]
